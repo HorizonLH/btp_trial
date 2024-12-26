@@ -1,0 +1,14 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TORDERS'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TORDERS'
+  }
+}
+define service ZUI_TORDERS_O4
+  provider contracts odata_v4_ui {
+  expose ZC_TORDERS       as Orders;
+  expose ZC_TORDERS_CHART as Chart;
+  expose ZC_TORDERITEMS   as Items;
+}

@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TSUPPLIERTYPES unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TSUPPLIERTYPES alias SupplierTypes
+persistent table ZTSUPPLIERTYPES
+draft table ZTSPPLIERTYPES_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Suppliertype;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   Suppliertype;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTSUPPLIERTYPES
+  {
+    Suppliertype = suppliertype;
+    Description = description;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

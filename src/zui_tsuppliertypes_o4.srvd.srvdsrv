@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TSUPPLIERTYPES'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TSUPPLIERTYPES'
+  }
+}
+define service ZUI_TSUPPLIERTYPES_O4 provider contracts odata_v4_ui {
+  expose ZC_TSUPPLIERTYPES as SupplierTypes;
+}

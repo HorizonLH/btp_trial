@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TCURRENCIES unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TCURRENCIES alias Currencies
+persistent table ZTCURRENCIES
+draft table ZTCURRENCIES_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Currency;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   Currency;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTCURRENCIES
+  {
+    Currency = currency;
+    Description = description;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

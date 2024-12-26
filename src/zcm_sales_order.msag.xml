@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZCM_SALES_ORDER</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>message</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Supplier Name cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Supplier Type cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Email cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Please confirm the email format.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Phone Number cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>Please confirm the phone number format.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>Country cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Customer Name cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Customer Type cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>Sales Owner Name cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>011</MSGNR>
+     <TEXT>Owner Type cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>012</MSGNR>
+     <TEXT>Product cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>013</MSGNR>
+     <TEXT>Plant cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>014</MSGNR>
+     <TEXT>Supplier cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>015</MSGNR>
+     <TEXT>Please check the Currency of Order Items are same.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>016</MSGNR>
+     <TEXT>Order Type cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>017</MSGNR>
+     <TEXT>Order Date cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>018</MSGNR>
+     <TEXT>Sales Org cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>019</MSGNR>
+     <TEXT>Channel cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>020</MSGNR>
+     <TEXT>Customer cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>021</MSGNR>
+     <TEXT>Sales Owner cannot be empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZCM_SALES_ORDER</ARBGB>
+     <MSGNR>022</MSGNR>
+     <TEXT>Division cannot be empty.</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

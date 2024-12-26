@@ -1,0 +1,65 @@
+managed implementation in class ZBP_R_TPRODUCTS unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TPRODUCTS alias Products
+persistent table ztproducts
+draft table ztproducts_d
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master ( global )
+early numbering // 自动生成ID（+）
+{
+  // field ( mandatory : create ) 自动生成ID（-）
+  // Productid;  自动生成ID（-）
+
+  field ( readonly )
+  Createdby,
+  Createdat,
+  Locallastchangedby,
+  Locallastchangedat,
+  Lastchangedat;
+
+  // field ( readonly : update ) 自动生成ID（-）
+  field ( readonly ) // 自动生成ID（+）
+  Productid;
+
+  field ( mandatory )
+  Productname, // Product Name验证（+）
+  Plantid,
+  Supplierid;
+
+  create;
+  update;
+  delete;
+
+  validation validateProductName on save { create; update; field Productname; }
+  validation validatePlant on save { create; update; field Plantid; }
+  validation validateSupplier on save { create; update; field Supplierid; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ztproducts
+    {
+      Productid          = productid;
+      Productname        = productname;
+      Netweight          = netweight;
+      Grossweight        = grossweight;
+      Price              = price;
+      Currencycode       = currencycode;
+      Basicunit          = basicunit;
+      Salesunit          = salesunit;
+      Weightunit         = weightunit;
+      Remark             = remark;
+      Supplierid         = supplierid;
+      Plantid            = plantid;
+      Createdby          = createdby;
+      Createdat          = createdat;
+      Locallastchangedby = locallastchangedby;
+      Locallastchangedat = locallastchangedat;
+      Lastchangedat      = lastchangedat;
+    }
+}

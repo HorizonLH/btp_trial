@@ -1,0 +1,48 @@
+managed implementation in class ZBP_R_TSTATUS_SO unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TSTATUS_SO alias Status
+persistent table ZTSTATUS_SO
+draft table ZTSTATUS_SO_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Status;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   Status;
+
+  field ( mandatory ) //必输
+   Description;
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTSTATUS_SO
+  {
+    Status = status;
+    Description = description;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

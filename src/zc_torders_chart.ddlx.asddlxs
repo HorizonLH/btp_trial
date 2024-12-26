@@ -1,0 +1,42 @@
+@Metadata.layer: #CORE
+
+@UI.chart: [
+  {
+    qualifier: 'columnChart',
+    title: 'Sales Orders',
+    description: 'Sales Orders',
+    chartType: #COLUMN,
+    dimensions: ['Salesorg', 'Channel', 'Division', 'Currency'],
+    measures: ['Totalamount']
+  }
+]
+
+@UI.selectionPresentationVariant: [{
+  text: 'Sales Order Chart',
+  selectionVariantQualifier: '',
+  presentationVariantQualifier: 'PVChart',
+  qualifier: 'Chart'
+}]
+
+@UI.presentationVariant: [{
+      qualifier: 'PVChart',
+      visualizations: [{type: #AS_CHART, qualifier: 'columnChart' }]
+    }
+]
+
+annotate entity ZC_TORDERS_CHART
+    with 
+{
+    @UI.lineItem: [{ position: 10, label: 'Sales Org' }]
+    Salesorg;
+    @UI.lineItem: [{ position: 20, label: 'Channel' }]
+    Channel;
+    @UI.lineItem: [{ position: 30, label: 'Division' }]
+    Division;
+    @UI.dataPoint: { qualifier: 'Totalamount' }
+    @UI.lineItem: [{ position: 40, label: 'Total Amount', type: #AS_DATAPOINT }]
+    Totalamount;
+    @UI.lineItem: [{ position: 50, label: 'Currency' }]
+    Currency;
+    
+}

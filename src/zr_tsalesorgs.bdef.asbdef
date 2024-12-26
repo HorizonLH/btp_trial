@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TSALESORGS unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TSALESORGS alias SalesOrgs
+persistent table ztsalesorgs
+draft table ztsalesorgs_d
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master ( global )
+
+{
+  field ( mandatory : create )
+  Salesorg;
+
+  field ( readonly )
+  Createdby,
+  Createdat,
+  Locallastchangedby,
+  Locallastchangedat,
+  Lastchangedat;
+
+  field ( readonly : update )
+  Salesorg;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ztsalesorgs
+    {
+      Salesorg           = salesorg;
+      Description        = description;
+      Createdby          = createdby;
+      Createdat          = createdat;
+      Locallastchangedby = locallastchangedby;
+      Locallastchangedat = locallastchangedat;
+      Lastchangedat      = lastchangedat;
+    }
+}

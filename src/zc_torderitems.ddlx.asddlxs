@@ -1,0 +1,110 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Order Item',
+    typeNamePlural: 'Order Items',
+    //https://ui5.sap.com/sdk/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview
+    typeImageUrl: 'sap-icon://sales-order',
+    title: { value: 'Productname' },
+    description: { value: 'Quantity' }
+  }
+}
+annotate view ZC_TORDERITEMS with
+{
+  @UI.facet: [
+              {
+                id: 'ItemInfo',
+                label: 'Item Information',
+                position: 10,
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                targetQualifier: 'ItemGroup'
+              },
+              {
+                id: 'ProductInfo',
+                label: 'Product Information',
+                position: 20,
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                targetQualifier: 'ProductGroup'
+              }
+           ]
+
+  @EndUserText.label: 'Item No'
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.identification: [ { position: 10, qualifier: 'ItemGroup' } ]
+  Itemno;
+
+  @EndUserText.label: 'Product'
+  @UI.lineItem: [ { position: 20 } ]
+  @UI.identification: [ { position: 20, qualifier: 'ItemGroup' } ]
+  Productid;
+
+  @EndUserText.label: 'Plant'
+  @UI.lineItem: [ { position: 30 } ]
+  @UI.identification: [ { position: 30, qualifier: 'ItemGroup' } ]
+  Plantid;
+
+  @EndUserText.label: 'Quantity'
+  @UI.lineItem: [ { position: 40 } ]
+  @UI.identification: [ { position: 40, qualifier: 'ItemGroup' } ]
+  Quantity;
+
+  @EndUserText.label: 'Price'
+  @UI.lineItem: [ { position: 50 } ]
+  @UI.identification: [ { position: 50, qualifier: 'ItemGroup' } ]
+  Sprice;
+
+  @EndUserText.label: 'Amount'
+  @UI.lineItem: [ { position: 60 } ]
+  @UI.identification: [ { position: 60, qualifier: 'ItemGroup' } ]
+  Amount;
+
+  @EndUserText.label: 'Remark'
+  @UI.identification: [ { position: 70, qualifier: 'ItemGroup' } ]
+  @UI.multiLineText: true
+  Itemtext;
+
+  @EndUserText.label: 'Supplier'
+  @UI.lineItem: [ { position: 80 } ]
+  Supplierid;
+
+  @EndUserText.label: 'Product'
+  @UI.identification: [ { position: 10, qualifier: 'ProductGroup' } ]
+  Productname;
+
+  @EndUserText.label: 'Basic Unit'
+  @UI.lineItem: [ { position: 70 } ]
+  @UI.identification: [ { position: 20, qualifier: 'ProductGroup' } ]
+  Basicunit;
+
+  @EndUserText.label: 'Sales Unit'
+  @UI.identification: [ { position: 30, qualifier: 'ProductGroup' } ]
+  Salesunit;
+
+  @EndUserText.label: 'Remark'
+  @UI.identification: [ { position: 40, qualifier: 'ProductGroup' } ]
+  Productremark;
+
+  @UI.hidden: true
+  Suppliername;
+
+  @UI.hidden: true
+  SupplierEmail;
+
+  @UI.hidden: true
+  SupplierPhone;
+
+  @UI.hidden: true
+  SupplierStreet;
+
+  @UI.hidden: true
+  SupplierTown;
+
+  @UI.hidden: true
+  SupplierCountry;
+
+  @UI.hidden: true
+  Productprice;
+
+}

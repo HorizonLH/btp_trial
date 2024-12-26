@@ -1,0 +1,52 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'Salesorg'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Salesorg'
+annotate view ZC_TSALESORGS with
+{
+  @EndUserText.label: 'Salesorg'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'SalesOrg'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'SalesOrg'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  Salesorg;
+  
+  @EndUserText.label: 'Description'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Description'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'Description'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  Description;
+  @UI.hidden: true
+  Createdby;
+  @UI.hidden: true
+  Createdat;
+  @UI.hidden: true
+  Locallastchangedby;
+  @UI.hidden: true
+  Locallastchangedat;
+  @UI.hidden: true
+  Lastchangedat;
+}

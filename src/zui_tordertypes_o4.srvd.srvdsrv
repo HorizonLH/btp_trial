@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TORDERTYPES'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TORDERTYPES'
+  }
+}
+define service ZUI_TORDERTYPES_O4 provider contracts odata_v4_ui {
+  expose ZC_TORDERTYPES as OrderTypes;
+}

@@ -1,0 +1,67 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'Unit'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Unit'
+annotate view ZC_TUNITS with
+{
+  @EndUserText.label: 'Unit'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Unit'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'Unit'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  Unit;
+  
+  @EndUserText.label: 'Descripton'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Descripton'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'Descripton'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  Descripton;
+  
+  @UI.identification: [ {
+    position: 30 
+  } ]
+  Createdby;
+  
+  @UI.identification: [ {
+    position: 40 
+  } ]
+  Createdat;
+  
+  @UI.identification: [ {
+    position: 50 
+  } ]
+  Locallastchangedby;
+  
+  @UI.identification: [ {
+    position: 60 
+  } ]
+  Locallastchangedat;
+  
+  @UI.identification: [ {
+    position: 70 
+  } ]
+  Lastchangedat;
+}

@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TDIVISIONS'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TDIVISIONS'
+  }
+}
+define service ZUI_TDIVISIONS_O4 provider contracts odata_v4_ui {
+  expose ZC_TDIVISIONS as Divisions;
+}

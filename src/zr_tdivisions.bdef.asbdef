@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TDIVISIONS unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TDIVISIONS alias Divisions
+persistent table ZTDIVISIONS
+draft table ZTDIVISIONS_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Division;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   Division;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTDIVISIONS
+  {
+    Division = division;
+    Description = description;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

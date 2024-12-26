@@ -1,0 +1,36 @@
+projection implementation in class ZBP_C_TORDERS unique;
+//strict ( 2 );
+use draft;
+define behavior for ZC_TORDERS alias ZcTorders
+use etag
+
+{
+  use create;
+  use update;
+  use delete;
+
+  use action order_submit;
+  use action order_approval_st;
+  use action order_approval_nd;
+  use action order_reject;
+  use action order_reset;
+  use action order_complete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use association _Items { create; with draft; }
+}
+
+define behavior for ZC_TORDERITEMS alias ZcTorderItems
+use etag
+
+{
+
+  use update;
+  use delete;
+
+  use association _Order { with draft; }
+}

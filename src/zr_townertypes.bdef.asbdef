@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TOWNERTYPES unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TOWNERTYPES alias OwnerTypes
+persistent table ZTOWNERTYPES
+draft table ZTOWNERTYPES_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Ownertype;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   Ownertype;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTOWNERTYPES
+  {
+    Ownertype = ownertype;
+    Rolename = rolename;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

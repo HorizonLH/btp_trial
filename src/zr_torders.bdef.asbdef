@@ -1,0 +1,157 @@
+managed implementation in class ZBP_R_TORDERS unique;
+//strict ( 2 );
+with draft;
+define behavior for ZR_TORDERS alias ZrTorders
+persistent table ztorders
+draft table ztorders_d
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master ( global )
+early numbering  //自动生成ID（+）
+with additional save
+{
+
+  field ( readonly )
+  Orderid,
+  Totalamount,
+  Statuscode,
+  Customertype,
+  Ownertype,
+  Createdby,
+  Createdat,
+  Locallastchangedby,
+  Locallastchangedat,
+  Lastchangedat;
+
+  field ( mandatory )
+  Ordertype,
+  Salesorg,
+  Channel,
+  Division,
+  Orderdate,
+  Customerid,
+  Ownerid;
+
+  create;
+  update;
+  delete;
+  association _Items
+  {
+    create; with draft; }
+
+  validation validateOrderType on save { create; update; field Ordertype; }
+  validation validateOrderDate on save { create; update; field Orderdate; }
+  validation validateSalesorg on save { create; update; field Salesorg; }
+  validation validateChannel on save { create; update; field Channel; }
+  validation validateCustomerid on save { create; update; field Customerid; }
+  validation validateOwnerid on save { create; update; field Ownerid; }
+  validation validateDivision on save { create; update; field Division; }
+
+  action order_submit parameter zorder_status_remark result [1] $self;
+  action order_approval_st parameter zorder_status_remark result [1] $self;
+  action order_approval_nd parameter zorder_status_remark result [1] $self;
+  action order_reject parameter zorder_status_remark result [1] $self;
+  action order_reset parameter zorder_status_remark result [1] $self;
+  action order_complete parameter zorder_status_remark result [1] $self;
+
+  determination setStatusToOpen on modify { create; }
+
+  // Customer info
+  determination Getcustomer on modify { create; field Customerid; field Ownerid; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ztorders
+    {
+      Orderid            = orderid;
+      Orderdate          = orderdate;
+      Salesorg           = salesorg;
+      Channel            = channel;
+      Division           = division;
+      Ordertype          = ordertype;
+      Typedesc           = typedesc;
+      Totalamount        = totalamount;
+      Currency           = currency;
+      Remark             = remark;
+      Criticality        = criticality;
+      Statuscode         = statuscode;
+      Customerid         = customerid;
+      Ownerid            = ownerid;
+      Customertype       = customertype;
+      Ownertype          = ownertype;
+      Createdby          = createdby;
+      Createdat          = createdat;
+      Locallastchangedby = locallastchangedby;
+      Locallastchangedat = locallastchangedat;
+      Lastchangedat      = lastchangedat;
+    }
+
+}
+
+define behavior for ZR_TORDERITEMS alias OrderItems
+persistent table ztorderitems
+draft table ztorderitems_d
+lock dependent by _Order
+early numbering //自动生成ID（+）
+with additional save
+{
+
+  field ( readonly )
+  Orderid, //自动生成ID（+）
+  Itemno,  //自动生成ID（+）
+  Amount,
+  //  Supplierid,
+  Createdby,
+  Createdat,
+  Locallastchangedby,
+  Locallastchangedat,
+  Lastchangedat;
+
+  field ( mandatory )
+  Productid,
+  Plantid,
+  Sprice,
+  Unit,
+  Currency,
+  Quantity;
+
+  //create;
+  update;
+  delete;
+
+  //  Total amount
+  internal action reCalcTotalPrice;
+  determination calculateTotalPrice on modify { create; field Sprice, Currency; field Quantity, Unit; }
+
+  // Product info
+  //internal action Getproductinfor  ;
+  determination Getproductinfor on modify { create; field Productid; }
+
+  validation save_modified on save { create; update; field Currency; }
+
+  mapping for ztorderitems
+    {
+      Orderid            = orderid;
+      Itemno             = itemno;
+      Plantid            = plantid;
+      Quantity           = quantity;
+      Sprice             = sprice;
+      Amount             = amount;
+      Currency           = currency;
+      Itemtext           = itemtext;
+      Unit               = unit;
+      Criticality        = criticality;
+      Productid          = productid;
+      Supplierid         = supplierid;
+      Createdby          = createdby;
+      Createdat          = createdat;
+      Locallastchangedby = locallastchangedby;
+      Locallastchangedat = locallastchangedat;
+      Lastchangedat      = lastchangedat;
+    }
+  association _Order { with draft; }
+}

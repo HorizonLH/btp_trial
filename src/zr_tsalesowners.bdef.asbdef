@@ -1,0 +1,66 @@
+managed implementation in class ZBP_R_TSALESOWNERS unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TSALESOWNERS alias SalesOwners
+persistent table ztsalesowners
+draft table ztslsowners_d
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master ( global )
+early numbering // 自动生成ID（+）
+{
+  // field ( mandatory : create ) 自动生成ID（-）
+  // Ownerid; 自动生成ID（-）
+
+  field ( readonly )
+  Createdby,
+  Createdat,
+  Locallastchangedby,
+  Locallastchangedat,
+  Lastchangedat;
+
+  // field ( readonly : update ) 自动生成ID（-）
+  field ( readonly ) // 自动生成ID（+）
+  Ownerid;
+
+  field ( mandatory )
+  Ownername,
+  Ownertype,
+  Email, // 邮箱验证（+）
+  Phone,
+  Country;
+
+  create;
+  update;
+  delete;
+
+  validation validateOwnerName on save { create; update; field Ownername; }
+  validation validateOwnerType on save { create; update; field Ownertype; }
+  validation validateEmail on save { create; update; field Email; }
+  validation validatePhone on save { create; update; field Phone; }
+  validation validateCountry on save { create; update; field Country; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ztsalesowners
+    {
+      Ownerid            = ownerid;
+      Ownername          = ownername;
+      Email              = email;
+      Phone              = phone;
+      Remark             = remark;
+      Street             = street;
+      Town               = town;
+      Country            = country;
+      Ownertype          = ownertype;
+      Createdby          = createdby;
+      Createdat          = createdat;
+      Locallastchangedby = locallastchangedby;
+      Locallastchangedat = locallastchangedat;
+      Lastchangedat      = lastchangedat;
+    }
+}

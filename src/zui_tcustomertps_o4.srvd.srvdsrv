@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TCUSTOMERTPS'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TCUSTOMERTPS'
+  }
+}
+define service ZUI_TCUSTOMERTPS_O4 provider contracts odata_v4_ui {
+  expose ZC_TCUSTOMERTPS as CustomerTypes;
+}

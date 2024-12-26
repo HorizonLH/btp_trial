@@ -1,0 +1,98 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Product',
+    typeNamePlural: 'Products',
+    typeImageUrl: 'sap-icon://activity-items',
+    title: { type: #STANDARD, value: 'Productname' },
+    description: { type: #STANDARD, value: 'Productid' }
+  },
+  presentationVariant: [{
+    sortOrder: [{
+        by: 'Productid',
+        direction: #ASC
+    }],
+    visualizations: [{
+        type: #AS_LINEITEM
+    }]
+  }]
+}
+annotate view ZC_TPRODUCTS with
+{
+  @UI.facet: [ {
+    label: 'Product Information',
+    id: 'ProductInfo',
+    purpose: #STANDARD,
+    position: 10 ,
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+
+  @EndUserText.label: 'Product ID'
+  @UI.lineItem:       [ { position: 10, label: 'Product ID', importance: #HIGH } ]
+  @UI.selectionField: [ { position: 10 } ]
+  Productid;
+
+  @EndUserText.label: 'Product'
+  @UI.identification: [ { position: 20, label: 'Product' } ]
+  @UI.lineItem:       [ { position: 20, label: 'Product', importance: #HIGH } ]
+  @UI.selectionField: [ { position: 20 } ]
+  Productname;
+
+  @EndUserText.label: 'Net Weight'
+  @UI.identification: [ { position: 80, label: 'Net Weight' } ]
+  @UI.lineItem:       [ { position: 30, label: 'Net Weight', importance: #MEDIUM } ]
+  Netweight;
+
+  @EndUserText.label: 'Gross Weight'
+  @UI.identification: [ { position: 90, label: 'Gross Weight' } ]
+  @UI.lineItem:       [ { position: 40, label: 'Gross Weight', importance: #MEDIUM } ]
+  Grossweight;
+
+  @EndUserText.label: 'Price'
+  @UI.identification: [ { position: 50, label: 'Price' } ]
+  @UI.lineItem:       [ { position: 50, label: 'Price', importance: #MEDIUM } ]
+  Price;
+
+  @EndUserText.label: 'Basic Unit'
+  @UI.identification: [ { position: 60, label: 'Basic Unit' } ]
+  @UI.lineItem:       [ { position: 60, label: 'Basic Unit', importance: #MEDIUM } ]
+  Basicunit;
+
+  @EndUserText.label: 'Sales Unit'
+  @UI.identification: [ { position: 70, label: 'Sales Unit' } ]
+  @UI.lineItem:       [ { position: 70, label: 'Sales Unit', importance: #MEDIUM } ]
+  Salesunit;
+
+  @EndUserText.label: 'Plant'
+  @UI.identification: [ { position: 30, label: 'Plant' } ]
+  @UI.lineItem:       [ { position: 80, label: 'Plant', importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 30 } ]
+  @UI.textArrangement: #TEXT_ONLY
+  Plantid;
+
+  @EndUserText.label: 'Supplier'
+  @UI.identification: [ { position: 40, label: 'Supplier' } ]
+  @UI.lineItem:       [ { position: 90, label: 'Supplier', importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 40 } ]
+  Supplierid;
+
+  @UI.identification: [ { position: 100, label: 'Remark' } ]
+  @UI.lineItem:       [ { position: 100, importance: #MEDIUM } ]
+  @UI.multiLineText: true
+  Remark;
+
+  @UI.lineItem: [ { position: 110, importance: #MEDIUM } ]
+  Createdby;
+
+  @UI.lineItem: [ { position: 120, importance: #MEDIUM } ]
+  Createdat;
+
+  @UI.lineItem: [ { position: 130, importance: #MEDIUM } ]
+  Locallastchangedby;
+
+  @UI.lineItem: [ { position: 140, importance: #MEDIUM } ]
+  Locallastchangedat;
+
+  @UI.lineItem: [ { position: 150, importance: #MEDIUM } ]
+  Lastchangedat;
+}

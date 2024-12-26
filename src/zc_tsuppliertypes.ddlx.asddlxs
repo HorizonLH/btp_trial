@@ -1,0 +1,80 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { title: { type: #STANDARD, value: 'Suppliertype' },
+                  description: { type: #STANDARD, value: 'Suppliertype' } }
+
+annotate view ZC_TSUPPLIERTYPES with
+
+{
+  @EndUserText.label: 'Suppliertype'
+  @UI.facet: [ { label: 'General Information',
+                 id: 'GeneralInfo',
+                 purpose: #STANDARD,
+                 position: 10,
+                 type: #IDENTIFICATION_REFERENCE } ]
+  @UI.identification: [ { position: 10, label: 'Suppliertype' } ]
+  @UI.lineItem: [ { position: 10, label: 'Suppliertype' } ]
+  @UI.selectionField: [ { position: 10 } ]
+  Suppliertype;
+
+  @EndUserText.label: 'Description'
+  @UI.identification: [ { position: 20, label: 'Description' } ]
+  @UI.lineItem: [ { position: 20, label: 'Description' } ]
+  @UI.selectionField: [ { position: 20 } ]
+  Description;
+
+  //  @UI.identification: [ {
+  //    position: 30
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 30
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 30
+  //  } ]
+  //  Createdby;
+  //
+  //  @UI.identification: [ {
+  //    position: 40
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 40
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 40
+  //  } ]
+  //  Createdat;
+  //
+  //  @UI.identification: [ {
+  //    position: 50
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 50
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 50
+  //  } ]
+  //  Locallastchangedby;
+  //
+  //  @UI.identification: [ {
+  //    position: 60
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 60
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 60
+  //  } ]
+  //  Locallastchangedat;
+  //
+  //  @UI.identification: [ {
+  //    position: 70
+  //  } ]
+  //  @UI.lineItem: [ {
+  //    position: 70
+  //  } ]
+  //  @UI.selectionField: [ {
+  //    position: 70
+  //  } ]
+  //  Lastchangedat;
+}

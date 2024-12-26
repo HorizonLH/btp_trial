@@ -1,0 +1,73 @@
+managed implementation in class ZBP_R_TSUPPLIERS unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TSUPPLIERS alias Suppliers
+persistent table ztsuppliers
+draft table ztsuppliers_d
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master ( global )
+early numbering // 自动生成ID（+）
+{
+  // field ( mandatory : create ) 自动生成ID（-）
+  // Supplierid; 自动生成ID（-）
+
+  field ( readonly )
+  Createdby,
+  Createdat,
+  Locallastchangedby,
+  Locallastchangedat,
+  Lastchangedat;
+
+  // field ( readonly : update ) 自动生成ID（-）
+  field ( readonly ) // 自动生成ID（+）
+  Supplierid;
+
+  field ( mandatory )
+  Suppliername, // Supplier Name验证（+）
+  Suppliertype, // Supplier Type验证（+）
+  Email,        // 邮箱验证（+）
+  Phone,        // Phone验证（+）
+  Country;      // Country验证（+）
+
+  create;
+  update;
+  delete;
+
+  validation validateSupplierName on save { create; update; field Suppliername; }
+  validation validateSupplierType on save { create; update; field Suppliertype; }
+  validation validateEmail on save { create; update; field Email; }
+  validation validatePhone on save { create; update; field Phone; }
+  validation validateCountry on save { create; update; field Country; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+
+  draft determine action Prepare
+  {
+    validation validateSupplierName;
+    validation validateSupplierType;
+    validation validateEmail;
+    validation validatePhone;
+    validation validateCountry;
+  }
+
+  mapping for ztsuppliers
+    {
+      Supplierid         = supplierid;
+      Suppliername       = suppliername;
+      Email              = email;
+      Phone              = phone;
+      Street             = street;
+      Town               = town;
+      Country            = country;
+      Suppliertype       = suppliertype;
+      Createdby          = createdby;
+      Createdat          = createdat;
+      Locallastchangedby = locallastchangedby;
+      Locallastchangedat = locallastchangedat;
+      Lastchangedat      = lastchangedat;
+    }
+}

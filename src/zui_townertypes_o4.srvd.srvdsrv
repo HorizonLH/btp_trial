@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TOWNERTYPES'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TOWNERTYPES'
+  }
+}
+define service ZUI_TOWNERTYPES_O4 provider contracts odata_v4_ui {
+  expose ZC_TOWNERTYPES as OwnerTypes;
+}

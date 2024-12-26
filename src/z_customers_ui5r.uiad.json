@@ -1,0 +1,33 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Customer Data Management",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD"
+  },
+  "ui5AppDetails": {
+    "appId": "zcustomers"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_930E8AD0A0AFCA88630E7C3FDF6A70986F57044B_TM",
+    "semanticObject": "z_customers",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_930E8AD0A0AFCA88630E7C3FDF6A70986F57044B_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Customer Data Management"
+      }
+    }
+  ]
+}

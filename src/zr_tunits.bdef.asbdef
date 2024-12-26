@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TUNITS unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TUNITS alias Units
+persistent table ztunits
+draft table ztunits_d
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master ( global )
+
+{
+  field ( mandatory : create )
+  Unit;
+
+  field ( readonly )
+  Createdby,
+  Createdat,
+  Locallastchangedby,
+  Locallastchangedat,
+  Lastchangedat;
+
+  field ( readonly : update )
+  Unit;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ztunits
+    {
+      Unit               = unit;
+      Descripton         = descripton;
+      Createdby          = createdby;
+      Createdat          = createdat;
+      Locallastchangedby = locallastchangedby;
+      Locallastchangedat = locallastchangedat;
+      Lastchangedat      = lastchangedat;
+    }
+}

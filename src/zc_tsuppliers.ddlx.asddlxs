@@ -1,0 +1,85 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Supplier',
+    typeNamePlural: 'Suppliers',
+    typeImageUrl: 'sap-icon://activity-items',
+    title: { type: #STANDARD, value: 'Suppliername' },
+    description: { type: #STANDARD, value: 'Supplierid' }
+  },
+  presentationVariant: [{
+    sortOrder: [{
+        by: 'Supplierid',
+        direction: #ASC
+    }],
+    visualizations: [{
+        type: #AS_LINEITEM
+    }]
+  }]
+}
+annotate view ZC_TSUPPLIERS with
+{
+  @UI.facet: [ {
+    label: 'Supplier Information',
+    id: 'SupplierInfo',
+    purpose: #STANDARD,
+    position: 10 ,
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  
+  @EndUserText.label: 'Supplier ID'
+  @UI.lineItem:       [ { position: 10, label: 'Supplier ID', importance: #HIGH } ]
+  @UI.selectionField: [ { position: 10 } ]
+  Supplierid;
+  
+  @EndUserText.label: 'Supplier Name'
+  @UI.identification: [ { position: 20, label: 'Supplier Name' } ]
+  @UI.lineItem:       [ { position: 20, label: 'Supplier Name', importance: #HIGH } ]
+  @UI.selectionField: [ { position: 20 } ]
+  Suppliername;
+  
+  @EndUserText.label: 'Supplier Type'
+  @UI.identification: [ { position: 30, label: 'Supplier Type' } ]
+  @UI.lineItem:       [ { position: 30, label: 'Supplier Type', importance: #HIGH } ]
+  @UI.selectionField: [ { position: 30 } ]
+  @UI.textArrangement: #TEXT_ONLY
+  Suppliertype;
+
+  @UI.identification: [ { position: 40, label: 'Email' } ]
+  @UI.lineItem:       [ { position: 40, label: 'Email', importance: #MEDIUM } ]
+  Email;
+
+  @UI.identification: [ { position: 50, label: 'Phone Number' } ]
+  @UI.lineItem:       [ { position: 50, label: 'Phone Number', importance: #MEDIUM } ]
+  Phone;
+
+  @UI.identification: [ { position: 60, label: 'Street' } ]
+  @UI.lineItem:       [ { position: 60, label: 'Street', importance: #MEDIUM } ]
+  @UI.multiLineText: true
+  Street;
+
+  @UI.identification: [ { position: 80, label: 'City/Town' } ]
+  @UI.lineItem:       [ { position: 70, label: 'City/Town', importance: #MEDIUM } ]
+  @UI.multiLineText: true
+  Town;
+
+  @UI.identification: [ { position: 70, label: 'Country' } ]
+  @UI.lineItem:       [ { position: 80, label: 'Country', importance: #MEDIUM } ]
+  @UI.textArrangement: #TEXT_ONLY
+  Country;
+
+  @UI.lineItem: [ { position: 90, importance: #MEDIUM } ]
+  Createdby;
+
+  @UI.lineItem: [ { position: 100, importance: #MEDIUM } ]
+  Createdat;
+
+  @UI.lineItem: [ { position: 110, importance: #MEDIUM } ]
+  Locallastchangedby;
+
+  @UI.lineItem: [ { position: 120, importance: #MEDIUM } ]
+  Locallastchangedat;
+
+  @UI.lineItem: [ { position: 130, importance: #MEDIUM } ]
+  Lastchangedat;
+}

@@ -1,0 +1,49 @@
+managed implementation in class ZBP_R_TPLANTS unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TPLANTS alias Plants
+persistent table ZTPLANTS
+draft table ZTPLANTS_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Plant;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( mandatory ) //必输
+   Description;
+
+  field ( readonly : update )
+   Plant;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTPLANTS
+  {
+    Plant = plant;
+    Description = description;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

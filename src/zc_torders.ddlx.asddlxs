@@ -1,0 +1,207 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Order',
+    typeNamePlural: 'Orders',
+    //https://ui5.sap.com/sdk/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview
+    typeImageUrl: 'sap-icon://sales-order',
+    title: { value: 'Orderid' },
+    description: { value: 'Orderdate' }
+  }
+}
+
+@UI.presentationVariant: [{
+      qualifier: 'PVTable',
+      visualizations: [{type: #AS_LINEITEM }]
+    }
+]
+
+@UI.selectionPresentationVariant: [{
+  text: 'Sales Orders',
+  selectionVariantQualifier: '',
+  presentationVariantQualifier: 'PVTable',
+  qualifier: 'Table'
+}]
+
+annotate view ZC_TORDERS with
+{
+  @UI.facet: [
+            {
+              label: 'Order Information',
+              id: 'OrderInfo',
+              type: #COLLECTION,
+              position: 10
+            },
+            {
+              label: 'Order Items',
+              id: 'OrderItems',
+              type: #COLLECTION,
+              position: 20
+            },
+            {
+              id: 'GeneralInfo',
+              label: 'General Information',
+              position: 10,
+              purpose: #STANDARD,
+              parentId: 'OrderInfo',
+              type: #IDENTIFICATION_REFERENCE,
+              targetQualifier: 'GeneralGroup'
+            },
+            {
+               id: 'CustomerInfo',
+               purpose: #STANDARD,
+               type: #FIELDGROUP_REFERENCE,
+               parentId: 'OrderInfo',
+               label: 'Customer Information',
+               position: 20,
+               targetQualifier: 'CustomerGroup'
+             },
+             {
+               id: 'OwnerInfo',
+               purpose: #STANDARD,
+               type: #FIELDGROUP_REFERENCE,
+               parentId: 'OrderInfo',
+               label: 'Sales Owner Information',
+               position: 30,
+               targetQualifier: 'OwnerGroup'
+             },
+            {
+              id: 'ItemsInfo',
+              position: 10,
+              purpose: #STANDARD,
+              parentId: 'OrderItems',
+              type: #LINEITEM_REFERENCE,
+              targetElement:   '_Items'
+            }
+         ]
+
+  @EndUserText.label: 'Order ID'
+  @UI.identification: [ { position: 10, qualifier: 'GeneralGroup' }, 
+                        { type: #FOR_ACTION, dataAction: 'order_submit', label: 'Submit', position: 10 },
+                        { type: #FOR_ACTION, dataAction: 'order_approval_st', label: 'Approval(lst)', position: 20 },
+                        { type: #FOR_ACTION, dataAction: 'order_approval_nd', label: 'Approval(2nd)', position: 30 },
+                        { type: #FOR_ACTION, dataAction: 'order_reject', label: 'Reject', position: 40 },
+                        { type: #FOR_ACTION, dataAction: 'order_reset', label: 'Reset', position: 50 },  
+                        { type: #FOR_ACTION, dataAction: 'order_complete', label: 'Complete', position: 60 }
+  ]
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.selectionField: [ { position: 10 } ]
+  Orderid;
+
+  @EndUserText.label: 'Order Type'
+  @UI.identification: [ { position: 20, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 20 } ]
+  @UI.selectionField: [ { position: 20 } ]
+  Ordertype;
+
+  @EndUserText.label: 'Order Date'
+  @UI.identification: [ { position: 60, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 30 } ]
+  @UI.selectionField: [ { position: 30 } ]
+  Orderdate;
+
+  @EndUserText.label: 'Sales Org'
+  @UI.identification: [ { position: 30, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 40 } ]
+  @UI.selectionField: [ { position: 50 } ]
+  Salesorg;
+
+  @EndUserText.label: 'Channel'
+  @UI.identification: [ { position: 40, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 50 } ]
+  @UI.selectionField: [ { position: 60 } ]
+  Channel;
+
+  @EndUserText.label: 'Division'
+  @UI.identification: [ { position: 50, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 60 } ]
+  @UI.selectionField: [ { position: 70 } ]
+  Division;
+
+  @UI.lineItem: [ { position: 70, label: 'Customer' } ]
+  @UI.fieldGroup: [{ label: 'Customer', qualifier: 'CustomerGroup', position: 10 }]
+  Customerid;
+
+  @UI.lineItem: [ { position: 80, label: 'Sales Owner' } ]
+  @UI.fieldGroup: [{ label: 'Sales Owner', qualifier: 'OwnerGroup', position: 10 }]
+  Ownerid;
+
+  @UI.identification: [ { position: 80 , label: 'Total Amount', qualifier: 'GeneralGroup' } ]
+  Totalamount;
+
+  @EndUserText.label: 'Status'
+  @UI.identification: [ { position: 90, criticality: 'Criticality', qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 90, criticality: 'Criticality' } ]
+  //  @UI.selectionField: [ { position: 40 } ]
+  Statusdesc;
+
+  @EndUserText.label: 'Status'
+  @UI.selectionField: [ { position: 40 } ]
+  Statuscode;
+
+  @EndUserText.label: 'Remark'
+  @UI.identification: [ { position: 70, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 100 } ]
+  Remark;
+
+  @UI.fieldGroup: [{ label: 'Customer Name', qualifier: 'CustomerGroup', position: 20 }]
+  CustomerName;
+
+  @UI.fieldGroup: [{ label: 'Customer Type', qualifier: 'CustomerGroup', position: 30 }]
+  Customertype;
+
+  @UI.hidden: true
+  CustomerEmail;
+
+  @UI.hidden: true
+  CustomerPhone;
+
+  @UI.hidden: true
+  CustomerStreet;
+
+  @UI.hidden: true
+  CustomerTown;
+
+  @UI.hidden: true
+  CustomerCountry;
+
+  @UI.fieldGroup: [{ label: 'Sales Owner Name', qualifier: 'OwnerGroup', position: 20 }]
+  OwnerName;
+
+  @UI.fieldGroup: [{ label: 'Sales Owner Type', qualifier: 'OwnerGroup', position: 30 }]
+  Ownertype;
+
+  @UI.hidden: true
+  OwnerEmail;
+
+  @UI.hidden: true
+  OwnerPhone;
+
+  @UI.hidden: true
+  OwnerStreet;
+
+  @UI.hidden: true
+  OwnerTown;
+
+  @UI.hidden: true
+  OwnerCountry;
+
+  @UI.hidden: true
+  Typedesc;
+
+  @UI.hidden: true
+  Createdby;
+
+  @UI.hidden: true
+  Createdat;
+
+  @UI.hidden: true
+  Locallastchangedby;
+
+  @UI.hidden: true
+  Locallastchangedat;
+
+  @UI.hidden: true
+  Lastchangedat;
+
+}

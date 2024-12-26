@@ -1,0 +1,65 @@
+managed implementation in class ZBP_R_TCUSTOMERS unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TCUSTOMERS alias Customers
+persistent table ztcustomers
+draft table ztcustomers_d
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master ( global )
+early numbering // 自动生成ID（+）
+{
+  // field ( mandatory : create ) 自动生成ID（-）
+  // Customerid;
+
+  field ( readonly )
+  Createdby,
+  Createdat,
+  Locallastchangedby,
+  Locallastchangedat,
+  Lastchangedat;
+
+  // field ( readonly : update ) 自动生成ID（-）
+  field ( readonly ) // 自动生成ID（+）
+  Customerid;
+
+  field ( mandatory )
+  Customername,
+  Customertype,
+  Email,        // 邮箱验证（+）
+  Phone,
+  Country;
+
+  create;
+  update;
+  delete;
+
+  validation validateCustomerName on save { create; update; field Customername; }
+  validation validateCustomerType on save { create; update; field Customertype; }
+  validation validateEmail on save { create; update; field Email; }
+  validation validatePhone on save { create; update; field Phone; }
+  validation validateCountry on save { create; update; field Country; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ztcustomers
+    {
+      Customerid         = customerid;
+      Customername       = customername;
+      Email              = email;
+      Phone              = phone;
+      Street             = street;
+      Town               = town;
+      Country            = country;
+      Customertype       = customertype;
+      Createdby          = createdby;
+      Createdat          = createdat;
+      Locallastchangedby = locallastchangedby;
+      Locallastchangedat = locallastchangedat;
+      Lastchangedat      = lastchangedat;
+    }
+}

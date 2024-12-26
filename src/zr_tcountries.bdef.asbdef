@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TCOUNTRIES unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TCOUNTRIES alias Countries
+persistent table ZTCOUNTRIES
+draft table ZTCOUNTRIES_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Country;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   Country;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTCOUNTRIES
+  {
+    Country = country;
+    Descripton = descripton;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TORDERTYPES unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TORDERTYPES alias OrderTypes
+persistent table ZTORDERTYPES
+draft table ZTORDERTYPES_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Ordertype;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   Ordertype;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTORDERTYPES
+  {
+    Ordertype = ordertype;
+    Description = description;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

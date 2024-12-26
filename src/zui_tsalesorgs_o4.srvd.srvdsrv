@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TSALESORGS'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TSALESORGS'
+  }
+}
+define service ZUI_TSALESORGS_O4 provider contracts odata_v4_ui {
+  expose ZC_TSALESORGS as SalesOrgs;
+}

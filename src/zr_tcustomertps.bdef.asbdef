@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TCUSTOMERTPS unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TCUSTOMERTPS alias CustomerTypes
+persistent table ZTCUSTOMERTPS
+draft table ZTCUSTOMERTPS_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Customertype;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   Customertype;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTCUSTOMERTPS
+  {
+    Customertype = customertype;
+    Description = description;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}
